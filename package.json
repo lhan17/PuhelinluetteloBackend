@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rd /s /q build && md build && cd C:/Users/lamth/FullStackOpen/osa2/puhelinluettelo && npm run build && xcopy build C:\\Users\\lamth\\Full-Stack-Open-2022\\osa3\\puhelinB\\build /E /H /C",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
   },
   "dependencies": {
     "cors": "^2.8.5",

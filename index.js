@@ -14,7 +14,7 @@ morgan.token("json", (req, res) => {
     })
 })
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :json'))
-
+app.use(express.static('build'))
 let persons = [
     {
         "name": "Arto Hellas",
@@ -39,7 +39,7 @@ let persons = [
 ]
 
 app.get('/', (req, res) => {
-    res.send('<h1>Hello World!</h1>')
+    
 })
 
 app.get('/api/persons', (req, res) => {
