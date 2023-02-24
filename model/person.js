@@ -6,6 +6,23 @@ const url = process.env.MONGODB_URI
 
 console.log('connecting to', url)
 
+function validator (val) {
+    const splitted = val.split('-')
+    console.log(splitted[0].length)
+
+    if (val.length < 8) {
+        return false
+    }
+    if (splitted.length !== 2) {
+        return false
+    }
+    if (splitted[0].length > 3 || splitted[0].length < 2) {
+        return false
+    }
+
+    return true
+}
+
 mongoose.connect(url)
     .then(result => {
         console.log('connected to MongoDB')
@@ -20,7 +37,10 @@ const personSchema = new mongoose.Schema({
         minlength: 3,
         required: true
     },
-    number: String,
+    number: {
+        type: String,
+        validate: validator
+    }
     // id: Number,
 })
 
